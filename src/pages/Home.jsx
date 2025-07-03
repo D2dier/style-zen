@@ -12,8 +12,11 @@ export default function Home() {
         <section className="hero">
           <div className="container">
             <h1>Express your style with StyleZen</h1>
-            <p>Discover minimalist, high-quality clothing designed for your everyday comfort and elegance.</p>
-            <Link to="/shop" className="btn">Shop Now</Link>
+            <p>
+              Discover minimalist, high-quality clothing designed for your
+              everyday comfort and elegance.
+            </p>
+            <a href="shop" className="btn">Shop Now</a>
           </div>
         </section>
 
@@ -22,28 +25,48 @@ export default function Home() {
             <h2 className="section-title">Our Collections</h2>
             <div className="collections-grid">
               <div className="collection-card">
-                <img src="https://picsum.photos/400/500?random=1" alt="Minimalist T-shirts collection" className="collection-img" loading="lazy" />
+                <img
+                  src="https://picsum.photos/400/500?random=1"
+                  alt="Minimalist T-shirts collection"
+                  className="collection-img"
+                  loading="lazy"
+                />
                 <div className="collection-info">
                   <h3>Essential Tees</h3>
                   <p>Soft, breathable basics for every day</p>
                 </div>
               </div>
               <div className="collection-card">
-                <img src="https://picsum.photos/400/500?random=2" alt="Relaxed loungewear collection" className="collection-img" loading="lazy" />
+                <img
+                  src="https://picsum.photos/400/500?random=2"
+                  alt="Relaxed loungewear collection"
+                  className="collection-img"
+                  loading="lazy"
+                />
                 <div className="collection-info">
                   <h3>Loungewear</h3>
                   <p>Comfortable styles for relaxing at home</p>
                 </div>
               </div>
               <div className="collection-card">
-                <img src="https://picsum.photos/400/500?random=3" alt="Elegant dresses collection" className="collection-img" loading="lazy" />
+                <img
+                  src="https://picsum.photos/400/500?random=3"
+                  alt="Elegant dresses collection"
+                  className="collection-img"
+                  loading="lazy"
+                />
                 <div className="collection-info">
                   <h3>Dresses</h3>
                   <p>Flowing silhouettes for effortless style</p>
                 </div>
               </div>
               <div className="collection-card">
-                <img src="https://picsum.photos/400/500?random=4" alt="Sustainable outerwear collection" className="collection-img" loading="lazy" />
+                <img
+                  src="https://picsum.photos/400/500?random=4"
+                  alt="Sustainable outerwear collection"
+                  className="collection-img"
+                  loading="lazy"
+                />
                 <div className="collection-info">
                   <h3>Outerwear</h3>
                   <p>Light layers for transitional weather</p>
@@ -62,21 +85,30 @@ export default function Home() {
                   <i className="fas fa-truck"></i>
                 </div>
                 <h3>Fast Delivery</h3>
-                <p>Get your order within 2-3 business days with our express shipping.</p>
+                <p>
+                  Get your order within 2-3 business days with our express
+                  shipping.
+                </p>
               </div>
               <div className="commitment-card">
                 <div className="commitment-icon">
                   <i className="fas fa-undo"></i>
                 </div>
                 <h3>Free Returns</h3>
-                <p>Not satisfied? Return within 30 days for free, no questions asked.</p>
+                <p>
+                  Not satisfied? Return within 30 days for free, no questions
+                  asked.
+                </p>
               </div>
               <div className="commitment-card">
                 <div className="commitment-icon">
                   <i className="fas fa-lock"></i>
                 </div>
                 <h3>Secure Payment</h3>
-                <p>Your payment information is processed securely with encryption.</p>
+                <p>
+                  Your payment information is processed securely with
+                  encryption.
+                </p>
               </div>
             </div>
           </div>

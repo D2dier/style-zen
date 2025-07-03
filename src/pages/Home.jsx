@@ -1,7 +1,6 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 // import './Home.css'; // Optional: create a Home.css if you want to separate styles
-// import Navbar from '../components/Navbar'; // If you have a shared Navbar component
+import Navbar from '../components/Navbar';
 
 export default function Home() {
   return (

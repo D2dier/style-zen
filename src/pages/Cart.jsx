@@ -1,14 +1,29 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Navbar from '../components/Navbar'; // if you have one
-import './Cart.css'; // your cart-specific styles
+// src/pages/Cart.jsx
+import React from "react";
+import "../styles/Cart.css"; // adjust path if needed
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Cart() {
+  const navigate = useNavigate();
+
+  const handleCheckout = () => {
+    navigate('/checkout'); // This path must match your Route in App.jsx
+  };
+
   return (
-    <div className="cart-page">
+    <>
       <header>
         <div className="container">
-          <Navbar />
+          <nav>
+            <a href="/" className="logo">StyleZen</a>
+            <div className="nav-links">
+              <a href="/">Home</a>
+              <a href="shop">Shop</a>
+              <a href="cart" className="active">Cart</a>
+            </div>
+          </nav>
         </div>
       </header>
 
@@ -32,7 +47,12 @@ export default function Cart() {
                   <tr>
                     <td data-label="Product">
                       <div className="cart-item">
-                        <img src="https://picsum.photos/200/200?random=31" alt="Linen Summer Dress" className="cart-item-img" loading="lazy" />
+                        <img
+                          src="https://picsum.photos/200/200?random=31"
+                          alt="Linen summer dress in beige"
+                          className="cart-item-img"
+                          loading="lazy"
+                        />
                         <div className="cart-item-info">
                           <h3>Linen Summer Dress</h3>
                           <p>Size: M</p>
@@ -43,20 +63,30 @@ export default function Cart() {
                     <td data-label="Quantity">
                       <div className="quantity-selector">
                         <button className="quantity-btn">-</button>
-                        <input type="number" defaultValue="1" min="1" className="quantity-input" />
+                        <input
+                          type="number"
+                          defaultValue="1"
+                          min="1"
+                          className="quantity-input"
+                        />
                         <button className="quantity-btn">+</button>
                       </div>
                     </td>
                     <td data-label="Total">$79.99</td>
                     <td>
-                      <button className="remove-item">Remove</button>
+                      <a href="#" className="remove-item">Remove</a>
                     </td>
                   </tr>
 
                   <tr>
                     <td data-label="Product">
                       <div className="cart-item">
-                        <img src="https://picsum.photos/200/200?random=32" alt="Linen Blouse" className="cart-item-img" loading="lazy" />
+                        <img
+                          src="https://picsum.photos/200/200?random=32"
+                          alt="White linen blouse with puff sleeves"
+                          className="cart-item-img"
+                          loading="lazy"
+                        />
                         <div className="cart-item-info">
                           <h3>Linen Blouse</h3>
                           <p>Size: S</p>
@@ -67,13 +97,18 @@ export default function Cart() {
                     <td data-label="Quantity">
                       <div className="quantity-selector">
                         <button className="quantity-btn">-</button>
-                        <input type="number" defaultValue="2" min="1" className="quantity-input" />
+                        <input
+                          type="number"
+                          defaultValue="2"
+                          min="1"
+                          className="quantity-input"
+                        />
                         <button className="quantity-btn">+</button>
                       </div>
                     </td>
                     <td data-label="Total">$99.98</td>
                     <td>
-                      <button className="remove-item">Remove</button>
+                      <a href="#" className="remove-item">Remove</a>
                     </td>
                   </tr>
                 </tbody>
@@ -93,13 +128,13 @@ export default function Cart() {
                   <span>Total</span>
                   <span>$192.57</span>
                 </div>
-                <Link to="/checkout" className="btn">Proceed to Checkout</Link>
+                <button className="btn" onClick={handleCheckout}>Proceed to Checkout</button>
               </div>
 
               <div className="cart-actions">
-                <Link to="/shop" className="continue-shopping">
+                <a href="#" className="continue-shopping">
                   <i className="fas fa-arrow-left"></i> Continue Shopping
-                </Link>
+                </a>
               </div>
             </div>
           </div>
@@ -121,8 +156,8 @@ export default function Cart() {
             <div className="footer-column">
               <h3>Quick Links</h3>
               <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/shop">Shop</Link></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="shop">Shop</a></li>
                 <li><a href="#">About Us</a></li>
                 <li><a href="#">Contact</a></li>
               </ul>
@@ -146,10 +181,10 @@ export default function Cart() {
             </div>
           </div>
           <div className="copyright">
-            <p>&copy; 2023 StyleZen. All rights reserved.</p>
+            <p>&copy; 2025 StyleZen. All rights reserved.</p>
           </div>
         </div>
       </footer>
-    </div>
+    </>
   );
 }

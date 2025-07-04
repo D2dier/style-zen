@@ -382,3 +382,22 @@
                 order: -1;
             }
         }
+        .remove-item {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 60%;
+            margin-top: 1rem;
+        }
+
+        .remove-item:hover {
+            background-color: #d89a9e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }

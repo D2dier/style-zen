@@ -1,9 +1,50 @@
-import React from "react";
-import "../styles/Confirmation.css"; // optional if you split the styles out
+import React, { useState } from "react";
+import "../styles/Confirmation.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Link } from "react-router-dom";
+import { useCart } from '../context/CartContext';
 
 export default function Confirmation() {
+  const [feedback, setFeedback] = useState({
+    experience: 0,
+    ease: 0,
+    satisfaction: 0,
+    comments: "",
+  });
+
+  const handleStarClick = (field, value) => {
+    setFeedback((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const { clearCart } = useCart();
+
+  const handleCommentsChange = (e) => {
+    setFeedback((prev) => ({ ...prev, comments: e.target.value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Feedback submitted:", feedback);
+    alert("Thank you for your feedback!");
+    clearCart();
+
+    window.location.href = "/"; // redirect to home
+  };
+
+  const renderStars = (field, value) => {
+    return [...Array(5)].map((_, index) => {
+      const starValue = index + 1;
+      return (
+        <i
+          key={starValue}
+          className={`fas fa-star ${starValue <= value ? "selected" : ""}`}
+          onClick={() => handleStarClick(field, starValue)}
+          style={{ cursor: "pointer", color: starValue <= value ? "#E8B4B8" : "#ccc", marginRight: "5px" }}
+        ></i>
+      );
+    });
+  };
+
   return (
     <>
       <header>
@@ -30,70 +71,43 @@ export default function Confirmation() {
               Your order has been received and is being processed. We'll send you a confirmation email shortly with all the details.
             </p>
 
-            <div className="order-details">
-              <div className="order-number">
-                Order number: <strong>#STZ-2023-45678</strong>
-              </div>
+            <p className="delivery-info">
+              Your order will be shipped <strong>within 1-2 business days</strong>.
+            </p>
 
-              <div className="customer-info">
-                <div className="info-block">
-                  <h3>Customer Information</h3>
-                  <p>
-                    Jane Smith<br />
-                    jane.smith@example.com<br />
-                    (555) 123-4567
-                  </p>
+            <div className="feedback-section">
+              <h3>Please let us know how we did by filling out the following survey:</h3>
+              <form onSubmit={handleSubmit} className="feedback-form">
+                <div className="feedback-question">
+                  <label>How was your overall experience?</label>
+                  <div>{renderStars("experience", feedback.experience)}</div>
                 </div>
-                <div className="info-block">
-                  <h3>Shipping Address</h3>
-                  <p>
-                    123 Zen Street<br />
-                    Vancouver, BC V6B 1A1<br />
-                    Canada
-                  </p>
-                </div>
-              </div>
 
-              <h3>Order Items</h3>
-              <div className="order-items">
-                <div className="order-item">
-                  <span>Linen Summer Dress × 1</span>
-                  <span>$79.99</span>
+                <div className="feedback-question">
+                  <label>How easy was it to complete your purchase?</label>
+                  <div>{renderStars("ease", feedback.ease)}</div>
                 </div>
-                <div className="order-item">
-                  <span>Linen Blouse × 2</span>
-                  <span>$99.98</span>
-                </div>
-              </div>
 
-              <div className="order-summary">
-                <div className="summary-row">
-                  <span>Subtotal</span>
-                  <span>$179.97</span>
+                <div className="feedback-question">
+                  <label>How satisfied are you with the products?</label>
+                  <div>{renderStars("satisfaction", feedback.satisfaction)}</div>
                 </div>
-                <div className="summary-row">
-                  <span>Shipping</span>
-                  <span>Free</span>
+
+                <div className="feedback-question">
+                  <label>Additional Comments:</label>
+                  <textarea
+                    rows="4"
+                    placeholder="Let us know if you have any feedback!"
+                    value={feedback.comments}
+                    onChange={handleCommentsChange}
+                  ></textarea>
                 </div>
-                <div className="summary-row">
-                  <span>Tax (7%)</span>
-                  <span>$12.60</span>
-                </div>
-                <div className="summary-row summary-total">
-                  <span>Total</span>
-                  <span>$192.57</span>
-                </div>
-              </div>
+
+                <button type="submit" className="btn">Submit Feedback</button>
+              </form>
             </div>
 
-            <div className="next-steps">
-              <p className="delivery-info">
-                Your order will be shipped <strong>within 1-2 business days </strong>.
-              </p>
-              <div className="action-buttons">
-                <Link to="/shop" className="btn btn-primary">Continue Shopping</Link>
-              </div>
-            </div>
+
           </div>
         </section>
       </main>

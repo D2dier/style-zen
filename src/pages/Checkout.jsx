@@ -1,27 +1,54 @@
 // src/pages/Checkout.jsx
-import React from "react";
+import React, { useRef } from "react";
 import "../styles/Checkout.css"; // adjust path as needed
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { useCart } from '../context/CartContext';
+
 
 
 export default function Checkout() {
+    const formRef = useRef();
     const navigate = useNavigate();
 
-    const handleCheckout = () => {
-    navigate('/confirmation'); // This path must match your Route in App.jsx
+    const handleCheckout = (e) => {
+      e.preventDefault();
+      if (formRef.current && formRef.current.checkValidity()) {
+        navigate('/confirmation');
+      } else {
+        alert("Please complete all required fields before placing your order.");
+      } 
     };
+
+    const { cartItems, subtotal, tax, total } = useCart();
+    const safeItems = cartItems || [];
+
+    const calculateSubtotal = () => {
+      return safeItems.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2);
+    };
+
+    const calculateTax = () => {
+      return (calculateSubtotal() * 0.07).toFixed(2); // 7% tax
+    };
+
+    const calculateTotal = () => {
+      return (parseFloat(calculateSubtotal()) + parseFloat(calculateTax())).toFixed(2);
+    };
+
+
 
   return (
     <>
       <header>
         <div className="container">
           <nav>
-            <a href="/" className="logo">StyleZen</a>
+            <Link to="/" className="logo">StyleZen</Link>
             <div className="nav-links">
-              <a href="/">Home</a>
-              <a href="shop">Shop</a>
-              <a href="cart">Cart</a>
+              <Link to="/">Home</Link>
+              <Link to="/shop">Shop</Link>
+              <Link to="/cart">Cart</Link>
             </div>
           </nav>
         </div>
@@ -34,7 +61,7 @@ export default function Checkout() {
 
             <div className="checkout-grid">
               <div className="checkout-form">
-                <form id="checkoutForm">
+                <form id="checkoutForm" ref={formRef}>
                   {/* Billing & Shipping Information */}
                   <div className="form-section">
                     <h3>Billing & Shipping Information</h3>
@@ -134,19 +161,22 @@ export default function Checkout() {
                 <h3>Order Summary</h3>
 
                 <div className="order-items">
-                  <div className="order-item">
-                    <span>Linen Summer Dress × 1</span>
-                    <span>$79.99</span>
-                  </div>
-                  <div className="order-item">
-                    <span>Linen Blouse × 2</span>
-                    <span>$99.98</span>
-                  </div>
+                  {safeItems.length === 0 ? (
+                    <p>Your cart is empty.</p>
+                  ) : (
+                    safeItems.map((item, index) => (
+                      <div className="order-item" key={index}>
+                        <span>{item.title} × {item.quantity}</span>
+                        <span>${(item.price * item.quantity).toFixed(2)}</span>
+                      </div>
+                    ))
+                  )}
                 </div>
+
 
                 <div className="order-item">
                   <span>Subtotal</span>
-                  <span>$179.97</span>
+                  <span>${subtotal.toFixed(2)}</span>
                 </div>
                 <div className="order-item">
                   <span>Shipping</span>
@@ -154,14 +184,15 @@ export default function Checkout() {
                 </div>
                 <div className="order-item">
                   <span>Tax (7%)</span>
-                  <span>$12.60</span>
+                  <span>${tax.toFixed(2)}</span>
                 </div>
                 <div className="order-item order-total">
                   <span>Total</span>
-                  <span>$192.57</span>
+                  <span>${total.toFixed(2)}</span>
                 </div>
 
-                <button type="submit" form="checkoutForm" className="btn" onClick={handleCheckout}>Place Order</button>
+
+                <button type="submit" form="checkoutForm" className="btn" onClick={(e) => handleCheckout(e)}>Place Order</button>
               </div>
             </div>
           </div>
@@ -183,8 +214,8 @@ export default function Checkout() {
             <div className="footer-column">
               <h3>Quick Links</h3>
               <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="shop">Shop</a></li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/shop">Shop</Link></li>
                 <li><a href="#">About Us</a></li>
                 <li><a href="#">Contact</a></li>
               </ul>

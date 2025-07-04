@@ -1,15 +1,21 @@
 // src/pages/Cart.jsx
 import React from "react";
-import "../styles/Cart.css"; // adjust path if needed
+import "../styles/Cart.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
+import { useCart } from '../context/CartContext'; //  Use custom hook
 
 export default function Cart() {
   const navigate = useNavigate();
+  const { cart, removeFromCart } = useCart(); //  Updated
 
   const handleCheckout = () => {
-    navigate('/checkout'); // This path must match your Route in App.jsx
+    navigate('/checkout');
+  };
+
+  const calculateSubtotal = () => {
+    return cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2);
   };
 
   return (
@@ -17,11 +23,11 @@ export default function Cart() {
       <header>
         <div className="container">
           <nav>
-            <a href="/" className="logo">StyleZen</a>
+            <Link to="/" className="logo">StyleZen</Link>
             <div className="nav-links">
-              <a href="/">Home</a>
-              <a href="shop">Shop</a>
-              <a href="cart" className="active">Cart</a>
+              <Link to="/">Home</Link>
+              <Link to="/shop">Shop</Link>
+              <Link to="/cart" className="active">Cart</Link>
             </div>
           </nav>
         </div>
@@ -44,73 +50,30 @@ export default function Cart() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td data-label="Product">
-                      <div className="cart-item">
-                        <img
-                          src="https://picsum.photos/200/200?random=31"
-                          alt="Linen summer dress in beige"
-                          className="cart-item-img"
-                          loading="lazy"
-                        />
-                        <div className="cart-item-info">
-                          <h3>Linen Summer Dress</h3>
-                          <p>Size: M</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td data-label="Price">$79.99</td>
-                    <td data-label="Quantity">
-                      <div className="quantity-selector">
-                        <button className="quantity-btn">-</button>
-                        <input
-                          type="number"
-                          defaultValue="1"
-                          min="1"
-                          className="quantity-input"
-                        />
-                        <button className="quantity-btn">+</button>
-                      </div>
-                    </td>
-                    <td data-label="Total">$79.99</td>
-                    <td>
-                      <a href="#" className="remove-item">Remove</a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td data-label="Product">
-                      <div className="cart-item">
-                        <img
-                          src="https://picsum.photos/200/200?random=32"
-                          alt="White linen blouse with puff sleeves"
-                          className="cart-item-img"
-                          loading="lazy"
-                        />
-                        <div className="cart-item-info">
-                          <h3>Linen Blouse</h3>
-                          <p>Size: S</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td data-label="Price">$49.99</td>
-                    <td data-label="Quantity">
-                      <div className="quantity-selector">
-                        <button className="quantity-btn">-</button>
-                        <input
-                          type="number"
-                          defaultValue="2"
-                          min="1"
-                          className="quantity-input"
-                        />
-                        <button className="quantity-btn">+</button>
-                      </div>
-                    </td>
-                    <td data-label="Total">$99.98</td>
-                    <td>
-                      <a href="#" className="remove-item">Remove</a>
-                    </td>
-                  </tr>
+                  {cart.length === 0 ? (
+                    <tr>
+                      <td colSpan="5" style={{ textAlign: 'center' }}>Your cart is empty.</td>
+                    </tr>
+                  ) : (
+                    cart.map((item) => (
+                      <tr key={item.id || item.title}>
+                        <td data-label="Product">
+                          <div className="cart-item">
+                            <img src={item.image} alt={item.title} className="cart-item-img" />
+                            <div className="cart-item-info">
+                              <h3>{item.title}</h3>
+                            </div>
+                          </div>
+                        </td>
+                        <td data-label="Price">${item.price.toFixed(2)}</td>
+                        <td data-label="Quantity">{item.quantity}</td>
+                        <td data-label="Total">${(item.price * item.quantity).toFixed(2)}</td>
+                        <td>
+                          <button className="remove-item" onClick={() => removeFromCart(item.title)}>Remove</button>
+                        </td>
+                      </tr>
+                    ))
+                  )}
                 </tbody>
               </table>
 
@@ -118,23 +81,26 @@ export default function Cart() {
                 <h3>Cart Summary</h3>
                 <div className="summary-row">
                   <span>Subtotal</span>
-                  <span>$179.97</span>
+                  <span>${calculateSubtotal()}</span>
                 </div>
+
                 <div className="summary-row">
                   <span>Tax (7%)</span>
-                  <span>$12.60</span>
+                  <span>${(calculateSubtotal() * 0.07).toFixed(2)}</span>
                 </div>
+
                 <div className="summary-row summary-total">
                   <span>Total</span>
-                  <span>$192.57</span>
+                  <span>${(calculateSubtotal() * 1.07).toFixed(2)}</span>
                 </div>
+
                 <button className="btn" onClick={handleCheckout}>Proceed to Checkout</button>
               </div>
 
               <div className="cart-actions">
-                <a href="#" className="continue-shopping">
+                <Link to="/shop" className="continue-shopping">
                   <i className="fas fa-arrow-left"></i> Continue Shopping
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -156,8 +122,8 @@ export default function Cart() {
             <div className="footer-column">
               <h3>Quick Links</h3>
               <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="shop">Shop</a></li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/shop">Shop</Link></li>
                 <li><a href="#">About Us</a></li>
                 <li><a href="#">Contact</a></li>
               </ul>

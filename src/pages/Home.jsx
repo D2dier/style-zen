@@ -13,11 +13,11 @@ export default function Home() {
       <header>
         <div className="container">
           <nav>
-            <a href="/" className="logo">StyleZen</a>
+            <Link to="/" className="logo">StyleZen</Link>
             <div className="nav-links">
-              <a href="/">Home</a>
-              <a href="shop">Shop</a>
-              <a href="cart">Cart</a>
+              <Link to="/">Home</Link>
+              <Link to="/shop">Shop</Link>
+              <Link to="/cart">Cart</Link>
             </div>
           </nav>
         </div>
@@ -147,8 +147,8 @@ export default function Home() {
             <div className="footer-column">
               <h3>Quick Links</h3>
               <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="shop">Shop</a></li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/shop">Shop</Link></li>
                 <li><a href="#">About Us</a></li>
                 <li><a href="#">Contact</a></li>
               </ul>

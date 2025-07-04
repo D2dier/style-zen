@@ -1,19 +1,28 @@
 // src/pages/Shop.jsx
 import React from "react";
-import "../styles/Shop.css"; // adjust path if needed
+import "../styles/Shop.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
+import { useCart } from '../context/CartContext'; // ✅ use your custom hook
+import { Link } from 'react-router-dom'; // ✅ use Link for internal nav
+
 export default function Shop() {
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (product) => {
+    addToCart(product);
+  };
+
   return (
     <>
       <header>
         <div className="container">
           <nav>
-            <a href="/" className="logo">StyleZen</a>
+            <Link to="/" className="logo">StyleZen</Link>
             <div className="nav-links">
-              <a href="/">Home</a>
-              <a href="shop" className="active">Shop</a>
-              <a href="cart">Cart</a>
+              <Link to="/">Home</Link>
+              <Link to="/shop" className="active">Shop</Link>
+              <Link to="/cart">Cart</Link>
             </div>
           </nav>
         </div>
@@ -46,8 +55,18 @@ export default function Shop() {
                   <h3>Essential White Tee</h3>
                   <div className="product-price">$29.99</div>
                   <div className="btn-group">
-                    <a href="#" className="btn">Add to Cart</a>
-                    <a href="#" className="btn btn-outline">View Details</a>
+                    <button
+                      className="btn"
+                      onClick={() => handleAddToCart({
+                        id: 1,
+                        title: 'Essential White Tee',
+                        price: 29.99,
+                        image: 'https://picsum.photos/400/500?random=11'
+                      })}
+                    >
+                      Add to Cart
+                    </button>
+                    <Link to="/product" className="btn btn-outline">View Details</Link>
                   </div>
                 </div>
               </div>
@@ -64,8 +83,19 @@ export default function Shop() {
                   <h3>Linen Trousers</h3>
                   <div className="product-price">$59.99</div>
                   <div className="btn-group">
-                    <a href="#" className="btn">Add to Cart</a>
-                    <a href="#" className="btn btn-outline">View Details</a>
+                    <button
+                      className="btn"
+                      onClick={() => handleAddToCart({
+			                  id: 2,
+                        title: 'Linen Trousers',
+                        price: 59.99,
+                        image: 'https://picsum.photos/400/500?random=11'
+                      })}
+                    >
+                      Add to Cart
+                    </button>
+
+                    <Link to="/shop" className="btn btn-outline">View Details</Link>
                   </div>
                 </div>
               </div>
@@ -82,8 +112,18 @@ export default function Shop() {
                   <h3>Oversized Sweater</h3>
                   <div className="product-price">$49.99</div>
                   <div className="btn-group">
-                    <a href="#" className="btn">Add to Cart</a>
-                    <a href="#" className="btn btn-outline">View Details</a>
+                    <button
+                      className="btn"
+                      onClick={() => handleAddToCart({
+			                  id: 3,
+                        title: 'Oversized Sweater',
+                        price: 49.99,
+                        image: 'https://picsum.photos/400/500?random=11'
+                      })}
+                    >
+                      Add to Cart
+                    </button>
+                    <Link to="/shop" className="btn btn-outline">View Details</Link>
                   </div>
                 </div>
               </div>
@@ -100,8 +140,18 @@ export default function Shop() {
                   <h3>Midi Dress</h3>
                   <div className="product-price">$69.99</div>
                   <div className="btn-group">
-                    <a href="#" className="btn">Add to Cart</a>
-                    <a href="#" className="btn btn-outline">View Details</a>
+                    <button
+                      className="btn"
+                      onClick={() => handleAddToCart({
+			                  id: 4,
+                        title: 'Midi Dress',
+                        price: 69.99,
+                        image: 'https://picsum.photos/400/500?random=11'
+                      })}
+                    >
+                      Add to Cart
+                    </button>
+                    <Link to="/shop" className="btn btn-outline">View Details</Link>
                   </div>
                 </div>
               </div>
@@ -118,8 +168,18 @@ export default function Shop() {
                   <h3>Classic Shirt</h3>
                   <div className="product-price">$45.99</div>
                   <div className="btn-group">
-                    <a href="#" className="btn">Add to Cart</a>
-                    <a href="#" className="btn btn-outline">View Details</a>
+                    <button
+                      className="btn"
+                      onClick={() => handleAddToCart({
+			                  id: 5,
+                        title: 'Classic Shirt',
+                        price: 45.99,
+                        image: 'https://picsum.photos/400/500?random=11'
+                      })}
+                    >
+                      Add to Cart
+                    </button>
+                    <Link to="/shop" className="btn btn-outline">View Details</Link>
                   </div>
                 </div>
               </div>
@@ -136,8 +196,18 @@ export default function Shop() {
                   <h3>Wide-Leg Pants</h3>
                   <div className="product-price">$54.99</div>
                   <div className="btn-group">
-                    <a href="#" className="btn">Add to Cart</a>
-                    <a href="#" className="btn btn-outline">View Details</a>
+                    <button
+                      className="btn"
+                      onClick={() => handleAddToCart({
+			                  id: 6,
+                        title: 'Wide-leg Pants',
+                        price: 54.99,
+                        image: 'https://picsum.photos/400/500?random=11'
+                      })}
+                    >
+                      Add to Cart
+                    </button>
+                    <Link to="/shop" className="btn btn-outline">View Details</Link>
                   </div>
                 </div>
               </div>
@@ -154,8 +224,18 @@ export default function Shop() {
                   <h3>Cashmere Turtleneck</h3>
                   <div className="product-price">$79.99</div>
                   <div className="btn-group">
-                    <a href="#" className="btn">Add to Cart</a>
-                    <a href="#" className="btn btn-outline">View Details</a>
+                    <button
+                      className="btn"
+                      onClick={() => handleAddToCart({
+			                  id: 7,
+                        title: 'Cashmere Turtleneck',
+                        price: 79.99,
+                        image: 'https://picsum.photos/400/500?random=11'
+                      })}
+                    >
+                      Add to Cart
+                    </button>
+                    <Link to="/shop" className="btn btn-outline">View Details</Link>
                   </div>
                 </div>
               </div>
@@ -172,8 +252,18 @@ export default function Shop() {
                   <h3>Trench Coat</h3>
                   <div className="product-price">$89.99</div>
                   <div className="btn-group">
-                    <a href="#" className="btn">Add to Cart</a>
-                    <a href="#" className="btn btn-outline">View Details</a>
+                    <button
+                      className="btn"
+                      onClick={() => handleAddToCart({
+			                  id: 8,
+                        title: 'Trench Coat',
+                        price: 89.99,
+                        image: 'https://picsum.photos/400/500?random=11'
+                      })}
+                    >
+                      Add to Cart
+                    </button>
+                    <Link to="/shop" className="btn btn-outline">View Details</Link>
                   </div>
                 </div>
               </div>
@@ -198,8 +288,8 @@ export default function Shop() {
             <div className="footer-column">
               <h3>Quick Links</h3>
               <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="shop">Shop</a></li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/shop">Shop</Link></li>
                 <li><a href="#">About Us</a></li>
                 <li><a href="#">Contact</a></li>
               </ul>

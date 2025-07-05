@@ -1,27 +1,21 @@
 import { Link } from 'react-router-dom';
 // import './Home.css'; // Optional: create a Home.css if you want to separate styles
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer'
 
 // src/pages/Home.jsx
-import React from "react";
-import "../styles/Home.css"; // adjust path as needed
-import "@fortawesome/fontawesome-free/css/all.min.css"; // make sure Font Awesome is installed
+import "../styles/Home.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
+// images
+import whiteT from '../img/white-tshirt.avif';
+import dress from '../img/dress.avif';
+import trenchCoat from '../img/trench-coat.jpeg';
 
 export default function Home() {
   return (
     <>
-      <header>
-        <div className="container">
-          <nav>
-            <Link to="/" className="logo">StyleZen</Link>
-            <div className="nav-links">
-              <Link to="/">Home</Link>
-              <Link to="/shop">Shop</Link>
-              <Link to="/cart">Cart</Link>
-            </div>
-          </nav>
-        </div>
-      </header>
+    <Navbar/>
 
       <main>
         <section className="hero">
@@ -31,17 +25,18 @@ export default function Home() {
               Discover minimalist, high-quality clothing designed for your
               everyday comfort and elegance.
             </p>
-            <a href="shop" className="btn">Shop Now</a>
+            <Link to="/shop" className="home-btn">Shop Now</Link>
+
           </div>
         </section>
 
         <section className="section">
           <div className="container">
-            <h2 className="section-title">Our Collections</h2>
+            <h2 className="section-title">New Collections</h2>
             <div className="collections-grid">
               <div className="collection-card">
                 <img
-                  src="https://picsum.photos/400/500?random=1"
+                  src={whiteT}
                   alt="Minimalist T-shirts collection"
                   className="collection-img"
                   loading="lazy"
@@ -51,21 +46,10 @@ export default function Home() {
                   <p>Soft, breathable basics for every day</p>
                 </div>
               </div>
+
               <div className="collection-card">
                 <img
-                  src="https://picsum.photos/400/500?random=2"
-                  alt="Relaxed loungewear collection"
-                  className="collection-img"
-                  loading="lazy"
-                />
-                <div className="collection-info">
-                  <h3>Loungewear</h3>
-                  <p>Comfortable styles for relaxing at home</p>
-                </div>
-              </div>
-              <div className="collection-card">
-                <img
-                  src="https://picsum.photos/400/500?random=3"
+                  src={dress}
                   alt="Elegant dresses collection"
                   className="collection-img"
                   loading="lazy"
@@ -77,7 +61,7 @@ export default function Home() {
               </div>
               <div className="collection-card">
                 <img
-                  src="https://picsum.photos/400/500?random=4"
+                  src={trenchCoat}
                   alt="Sustainable outerwear collection"
                   className="collection-img"
                   loading="lazy"
@@ -129,53 +113,7 @@ export default function Home() {
           </div>
         </section>
       </main>
-
-      <footer>
-        <div className="container">
-          <div className="footer-content">
-            <div className="footer-column">
-              <h3>About StyleZen</h3>
-              <p>
-                Minimalist clothing designed for comfort and sustainability.
-              </p>
-              <div className="social-links">
-                <a href="#"><i className="fab fa-instagram"></i></a>
-                <a href="#"><i className="fab fa-facebook-f"></i></a>
-                <a href="#"><i className="fab fa-pinterest-p"></i></a>
-              </div>
-            </div>
-            <div className="footer-column">
-              <h3>Quick Links</h3>
-              <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/shop">Shop</Link></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-            </div>
-            <div className="footer-column">
-              <h3>Customer Service</h3>
-              <ul>
-                <li><a href="#">Shipping Policy</a></li>
-                <li><a href="#">Returns & Exchanges</a></li>
-                <li><a href="#">Size Guide</a></li>
-                <li><a href="#">FAQs</a></li>
-              </ul>
-            </div>
-            <div className="footer-column">
-              <h3>Contact Us</h3>
-              <ul>
-                <li><i className="fas fa-envelope"></i> hello@stylezen.com</li>
-                <li><i className="fas fa-phone"></i> (123) 456-7890</li>
-                <li><i className="fas fa-map-marker-alt"></i> 123 Zen Street, CA</li>
-              </ul>
-            </div>
-          </div>
-          <div className="copyright">
-            <p>&copy; 2025 StyleZen. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer/>
     </>
   );
 }

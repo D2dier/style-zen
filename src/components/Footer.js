@@ -8,7 +8,9 @@ function Footer() {
           <div className="footer-content">
             <div className="footer-column">
               <h3>About StyleZen</h3>
-              <p>Minimalist clothing designed for comfort and sustainability.</p>
+              <p>
+                Minimalist clothing designed for comfort and sustainability.
+              </p>
               <div className="social-links">
                 <a href="#"><i className="fab fa-instagram"></i></a>
                 <a href="#"><i className="fab fa-facebook-f"></i></a>

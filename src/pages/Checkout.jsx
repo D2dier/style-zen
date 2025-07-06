@@ -1,5 +1,5 @@
 // src/pages/Checkout.jsx
-import React, { useRef } from "react";
+import { useRef } from "react";
 import "../styles/Checkout.css"; // adjust path as needed
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useNavigate } from 'react-router-dom';
@@ -26,18 +26,6 @@ export default function Checkout() {
 
     const { cartItems, subtotal, tax, total } = useCart();
     const safeItems = cartItems || [];
-
-    const calculateSubtotal = () => {
-      return safeItems.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2);
-    };
-
-    const calculateTax = () => {
-      return (calculateSubtotal() * 0.07).toFixed(2); // 7% tax
-    };
-
-    const calculateTotal = () => {
-      return (parseFloat(calculateSubtotal()) + parseFloat(calculateTax())).toFixed(2);
-    };
 
 
 

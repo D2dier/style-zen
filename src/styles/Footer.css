@@ -59,3 +59,11 @@
             color: #aaaaaa;
             font-size: 0.9rem;
         }
+
+        .avery {
+            color: white;
+            text-decoration: none;
+        }
+        .avery:hover {
+            color: var(--accent);
+        }

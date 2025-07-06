@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
+import Search from './pages/Search'
 import Shop from './pages/Shop';
 import Product from './pages/Product';
 import Cart from './pages/Cart';
@@ -28,6 +29,7 @@ function App() {
         <ScrollToTop/>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/product" element={<Product />} />
           <Route path="/product/:id" element={<Product />} />

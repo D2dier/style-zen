@@ -13,7 +13,7 @@ import bucketHat from '../img/bucket-hat.avif';
 const products = [
   {
     id: 1,
-    title: 'Essential T-Shirt',
+    title: 'Essential T-shirt',
     price: 29.99,
     image: whiteT,
     alt: 'Minimalist white cotton t-shirt with round neck',
@@ -21,7 +21,7 @@ const products = [
   },
   {
     id: 2,
-    title: 'Classic T-Shirt',
+    title: 'Classic T-shirt',
     price: 45.99,
     image: blackT,
     alt: 'Light beige cotton shirt with button-down collar',

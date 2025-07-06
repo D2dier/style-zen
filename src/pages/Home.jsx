@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom';
-// import './Home.css'; // Optional: create a Home.css if you want to separate styles
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer'
 
-// src/pages/Home.jsx
 import "../styles/Home.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 

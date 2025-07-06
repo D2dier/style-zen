@@ -27,6 +27,10 @@
             gap: 2rem;
         }
 
+        .nav-links .active-link {
+            color: var(--accent);
+        }
+
         .nav-links a {
             text-decoration: none;
             color: var(--text);

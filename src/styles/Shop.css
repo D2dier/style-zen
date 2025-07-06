@@ -31,6 +31,8 @@
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text);
         }
 
         .shop-product-card:hover {
@@ -71,6 +73,7 @@
             border: none;
             cursor: pointer;
             font-size: 0.9rem;
+            line-height: 1;
         }
 
         .shop-btn:hover {
@@ -86,6 +89,5 @@
         }
 
         .shop-btn-outline:hover {
-            background-color: var(--accent);
             color: white;
         }

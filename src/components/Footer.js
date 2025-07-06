@@ -45,7 +45,11 @@ function Footer() {
             </div>
           </div>
           <div className="copyright">
-            <p>&copy; 2025 StyleZen. All rights reserved.</p>
+            <p>&copy; 2025 StyleZen. All rights reserved. | Website by
+                <a className="avery" href="https://didier-ngoie-portfolio.netlify.app/" target="_blank" rel="noopener noreferrer"> Didier Ngoie </a>
+                     &
+                <a className="avery" href="https://ngavery.github.io/averyng.github.io/" target="_blank" rel="noopener noreferrer"> Avery Ng </a>
+            </p>
           </div>
         </div>
       </footer>

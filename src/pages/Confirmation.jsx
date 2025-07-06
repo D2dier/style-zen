@@ -3,6 +3,7 @@ import "../styles/Confirmation.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Link } from "react-router-dom";
 import { useCart } from '../context/CartContext';
+import Navbar from "../components/Navbar";
 
 export default function Confirmation() {
   const [feedback, setFeedback] = useState({
@@ -47,18 +48,7 @@ export default function Confirmation() {
 
   return (
     <>
-      <header>
-        <div className="container">
-          <nav>
-            <Link to="/" className="logo">StyleZen</Link>
-            <div className="nav-links">
-              <Link to="/">Home</Link>
-              <Link to="/shop">Shop</Link>
-              <Link to="/cart">Cart</Link>
-            </div>
-          </nav>
-        </div>
-      </header>
+      <Navbar/>
 
       <main>
         <section className="confirmation-section">

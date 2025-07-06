@@ -3,8 +3,8 @@ import React, { useRef } from "react";
 import "../styles/Checkout.css"; // adjust path as needed
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+//import { Link } from 'react-router-dom';
+//import { useContext } from 'react';
 import { useCart } from '../context/CartContext';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";

@@ -8,7 +8,7 @@ import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Confirmation from './pages/Confirmation';
 import { CartProvider } from './context/CartContext';
-import { useContext } from 'react';
+//import { useContext } from 'react';
 import React from 'react';
 
 

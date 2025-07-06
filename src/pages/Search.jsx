@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import '../styles/Search.css';
 import products from '../data/products';
 
-import { FaSearch } from "react-icons/fa";
+//import { FaSearch } from "react-icons/fa";
 
 export default function Search() {
     const [search, setSearch] = useState("");

@@ -1,12 +1,12 @@
 
 ---
 
-## 📁 `style-zen` — Assignment 4: Minimalist E-Commerce Site
+## 📁 `style-zen` — Minimalist E-Commerce Site
 
 ```markdown
 # Style-Zen
 
-**Style-Zen** is a minimalist fashion e-commerce prototype for Assignment 4 of SEG3525. Designed with simplicity and user comfort in mind, it emphasizes visual hierarchy, clean layout, and responsive design.
+**Style-Zen** is a minimalist fashion e-commerce prototype. Designed with simplicity and user comfort in mind, it emphasizes visual hierarchy, clean layout, and responsive design.
 
 ## 🧘 Features
 
